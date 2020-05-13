@@ -8,6 +8,7 @@ import com.emart.user.dao.SellerDao;
 import com.emart.user.dao.UserDao;
 import com.emart.user.entity.Buyer;
 import com.emart.user.entity.Seller;
+import com.emart.user.entity.User;
 import com.emart.user.service.UserService;
 
 @Service
@@ -58,4 +59,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public User userLogout(String email) {
+        User user = userDao.findByEmail(email);
+        if(user != null){
+            user.setLoginStatus(Boolean.FALSE);
+            user = userDao.save(user);
+        }
+        return user;
+    }
 }

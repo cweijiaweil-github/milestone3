@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.sf.json.JSONObject;
+
 @RestController
 @RequestMapping(value = "user")
 public class UserController {
@@ -29,6 +31,19 @@ public class UserController {
     @PostMapping(value = "/seller/signup")
     public Seller saveBuyer(@RequestBody Seller seller) {
         return this.userService.saveSeller(seller);
+    }
+
+    @PostMapping(value = "/logout")
+    public JSONObject saveBuyer(@RequestBody JSONObject userJson) {
+        String email = userJson.getString("email");
+        User user = userService.userLogout(email);
+        JSONObject retJson = new JSONObject();
+        if(user == null){
+            retJson.put("data", "");
+        } else{
+            retJson.put("loginStatus",user.getLoginStatus());
+        }
+        return retJson;
     }
 
     @PostMapping(value = "/login")

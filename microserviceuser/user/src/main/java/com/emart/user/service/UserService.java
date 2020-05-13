@@ -2,6 +2,7 @@ package com.emart.user.service;
 
 import com.emart.user.entity.Buyer;
 import com.emart.user.entity.Seller;
+import com.emart.user.entity.User;
 
 import org.springframework.stereotype.Service;
 
@@ -15,4 +16,6 @@ public interface UserService {
     public int findBuyer(String mail,String password);
     
     public int findSeller(String mail,String password);
+
+    public User userLogout(String email);
 }
