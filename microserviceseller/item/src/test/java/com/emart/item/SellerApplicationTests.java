@@ -3,7 +3,9 @@ package com.emart.item;
 import java.util.List;
 import java.util.Map;
 
+import com.emart.category.entity.Category;
 import com.emart.item.entity.Item;
+import com.emart.subCategory.entity.SubCategory;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -69,6 +71,19 @@ class SellerApplicationTests {
 	}
 
 
+	@Test
+	void postUpdateItemStock()  throws Exception {
+		Item item = new Item();
+		item.setId(6L);
+		item.setItemId("item002");
+		item.setItem_name("item_name1");
+		item.setCategoryId("c1001");
+		item.setSubcategoryId("sc0001");
+		item.setSellerId("seller00001");
+		item.setPrice(156);
+		Map<String, List<Map<String,Object>>> result = testRestTemplate.postForObject("/item/updateItem",item,Map.class);
+		Assert.notNull(result, "message");
+	}
 
 	
 	@Test
@@ -77,5 +92,6 @@ class SellerApplicationTests {
 		List<Map<String,Object>> list1 = result.get("key");
 		Assert.hasLength(list1.get(0).get("item_name").toString(),"item_name1");
 	}
+
 
 }

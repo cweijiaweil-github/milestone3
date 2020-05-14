@@ -36,9 +36,9 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 
     
     @Override
-    public List<String> findSubCategoryList(String subCateory_id) {
+    public List<SubCategory> findSubCategoryList(String subCateory_id) {
         try {
-            return this.subCategoryDao.findSubCategoryList(subCateory_id);
+            return this.subCategoryDao.findBySubCategoryId(subCateory_id);
         } catch (Exception e) {
             return null;
         }

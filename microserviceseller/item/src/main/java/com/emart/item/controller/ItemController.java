@@ -75,31 +75,6 @@ public class ItemController {
         return map;
     }
 
-    @GetMapping(value = "/findcategorys")
-    public Map<String, List<Category>> findAllCategory() {
-        List<Category> categoryList = this.categoryService.findAllCategory();
-        Map<String, List<Category>> map = new HashMap<>();
-        if (categoryList.size() > 0) {
-            map.put("key", categoryList);
-        }
-        return map;
-    }
 
-    @PostMapping(value = "/findsubcategorys/{category_id}")
-    public Map<String, List<SubCategory>> findAllCategory(@PathVariable("category_id") String category_id) {
-        List<SubCategory> subCategoryList = this.subCategoryService.findByCategory_id(category_id);
-        Map<String, List<SubCategory>> map = new HashMap<>();
-        if (subCategoryList.size() > 0) {
-            map.put("key", subCategoryList);
-        }
-        return map;
-    }
 
-    @PostMapping(value = "/subcategorylist/{sub_category_id}")
-    public Map<String, List<String>> findSubCategoryList(@PathVariable("sub_category_id") String sub_category_id) {
-        List<String> list = this.subCategoryService.findSubCategoryList(sub_category_id);
-        Map<String, List<String>> map = new HashMap<>();
-        map.put("key", list);
-        return map;
-    }
 }

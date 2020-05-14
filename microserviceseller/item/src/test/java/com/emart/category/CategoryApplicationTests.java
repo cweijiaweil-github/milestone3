@@ -1,5 +1,8 @@
 package com.emart.category;
 
+import java.util.List;
+import java.util.Map;
+
 import com.emart.category.entity.Category;
 import com.emart.subCategory.entity.SubCategory;
 import com.emart.transactions.entity.Transactions;
@@ -11,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Assert;
+
+import net.sf.json.JSONArray;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) 
@@ -29,4 +34,12 @@ class CategoryApplicationTests {
 		Assert.hasLength(result.getCategoryId(),category.getCategoryId());
 	}
 
+	@Test
+	void getFindAllCategory()  throws Exception {
+		Map<String, List<Category>> result = testRestTemplate.getForObject("/subCategory/findcategorys",Map.class);
+		System.out.println("xxxxxxxxxxxxx"+result);
+		List<Category> list1 = result.get("key");
+		JSONArray  json  =  JSONArray.fromObject(list1.get(0)); 
+		Assert.hasLength(json.getJSONObject(0).get("sellerId").toString(),"s0001");
+	}
 }

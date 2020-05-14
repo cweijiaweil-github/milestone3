@@ -13,7 +13,7 @@ public interface SubCategoryService {
 
     public List<SubCategory> findByCategory_id(String category_id);
     
-    public List<String> findSubCategoryList(String subCateory_id);
+    public List<SubCategory> findSubCategoryList(String subCateory_id);
 
     
 }
