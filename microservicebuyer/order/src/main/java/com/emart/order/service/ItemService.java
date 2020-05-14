@@ -24,7 +24,7 @@ public class ItemService {
 
     
     public List<Item> fillerItems(String priceStart,String priceEnd) {
-        String itemUrl = "http://APP-SELLER/item/fillerItems/{priceStart,priceEnd}";
+        String itemUrl = "http://APP-SELLER/item/fillerItems/{priceStart}/{priceEnd}";
         Item[] model = this.restTemplate.getForObject(itemUrl
                 , Item[].class,priceStart,priceEnd);
         return Arrays.asList(model);

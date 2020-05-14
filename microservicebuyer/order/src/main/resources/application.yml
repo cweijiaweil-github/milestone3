@@ -21,6 +21,10 @@ spring:
   main:
     allow-bean-definition-overriding: true 
 
+app-item:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    
 eureka:
   client:
     service-url:

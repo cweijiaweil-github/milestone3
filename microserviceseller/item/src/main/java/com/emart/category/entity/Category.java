@@ -33,6 +33,8 @@ public class Category implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
+    private SubCategory subCategory = new SubCategory();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
