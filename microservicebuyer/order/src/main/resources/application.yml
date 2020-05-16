@@ -20,11 +20,12 @@ spring:
        ddl-auto: update
   main:
     allow-bean-definition-overriding: true 
-
 app-item:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-    
+feign:
+  hystrix:
+    enabled: true
 eureka:
   client:
     service-url:

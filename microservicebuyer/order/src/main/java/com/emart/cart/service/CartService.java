@@ -22,7 +22,7 @@ public class CartService {
         return this.cartDao.findAll();
     }
 
-    public void deleteBatch(List<Integer> LString) {
+    public void deleteBatch(List<Long> LString) {
         cartDao.deleteBatch(LString);
     }
 

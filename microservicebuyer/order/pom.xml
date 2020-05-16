@@ -95,9 +95,15 @@
     <version>3.9.0</version>
 </dependency>
 
+<!-- hystrix -->
 <dependency>
    <groupId>org.springframework.cloud</groupId>
    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+</dependency>
+<!-- fegnin -->
+<dependency>
+   <groupId>org.springframework.cloud</groupId>
+   <artifactId>spring-cloud-starter-openfeign</artifactId>
 </dependency>
 	</dependencies>
 

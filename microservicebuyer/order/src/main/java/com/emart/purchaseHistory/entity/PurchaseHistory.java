@@ -36,25 +36,26 @@ public class PurchaseHistory implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "item_id")
-    private String item_id;
+    @Column(name = "itemId")
+    private String itemId;
     
     @NotNull
-    @Column(name = "category_id")
-    private String category_id;
+    @Column(name = "categoryId")
+    private String categoryId;
 
     @NotNull
-    @Column(name = "bsubcategory_id")
-    private String bsubcategory_id;
+    @Column(name = "subcategoryId")
+    private String subcategoryId;
 
-    @Column(name = "buyer_id")
-    private String buyer_id;
+    @Column(name = "buyerId")
+    private String buyerId;
 
-    @Column(name = "seller_id")
-    private String seller_id;
+    @NotNull
+    @Column(name = "sellerId")
+    private String sellerId;
     
-    @Column(name = "transaction_id")
-    private String transaction_id;
+    @Column(name = "transactIionId")
+    private String transactIionId;
     
     @Column(name = "num_items")
     private int num_items;

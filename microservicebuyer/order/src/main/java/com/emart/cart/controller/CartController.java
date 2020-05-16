@@ -1,7 +1,9 @@
 package com.emart.cart.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.emart.cart.entity.Cart;
 import com.emart.cart.service.CartService;
@@ -29,17 +31,22 @@ public class CartController {
         return this.cartService.addCarts(cart);
     }
 
-    @PostMapping(value = "/listcarts")
-    public List<Cart> listCarts() {
-        return this.cartService.listCarts();
+    @GetMapping(value = "/listcarts")
+    public Map<String, List<Cart>> listCarts() {
+        List<Cart> cartlist = this.cartService.listCarts();
+        Map<String, List<Cart>> map = new HashMap<>();
+        if (cartlist.size() > 0) {
+            map.put("key", cartlist);
+        }
+        return map;
     }
 
     @GetMapping(value = "/deletecart/{id}")
-    public List<Cart> addCartItems(@PathVariable("cartId")  String id) {
+    public Map<String, List<Cart>> deleteCartItems(@PathVariable("id")  String id) {
         String[] idList = id.split(",");
-        List<Integer> LString = new ArrayList<Integer>();
+        List<Long> LString = new ArrayList<Long>();
         for(String str : idList){
-            LString.add(new Integer(str));
+            LString.add(new Long(str));
         }
         cartService.deleteBatch(LString);
         return this.listCarts();

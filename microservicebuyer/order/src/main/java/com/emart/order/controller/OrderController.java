@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.emart.order.entity.Item;
 import com.emart.order.service.OrderService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,11 +26,10 @@ public class OrderController {
 
     @GetMapping(value = "/search/{item_name}")
     public Item searchItems(@PathVariable("item_name") String item_name) {
-        
         return this.orderService.searchItems(item_name);
     }
     
-    @PostMapping(value = "/fillerItems/{priceStart,priceEnd}")
+    @GetMapping(value = "/fillerItems/{priceStart,priceEnd}")
     public List<Item> fillerItems(@PathVariable("priceStart") String priceStart,@PathVariable("priceEnd") String priceEnd) {
         return this.orderService.fillerItems(priceStart,priceEnd);
     }

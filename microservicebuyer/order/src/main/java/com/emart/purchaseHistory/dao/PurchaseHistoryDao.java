@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PurchaseHistoryDao extends JpaRepository<PurchaseHistory, Integer>{
     
-    @Query(value="select t.item_id from t_purchaseHistory as t where t.buyer_id = ?1",nativeQuery=true)
-    public List<String> getHistoryList(String buyer_id);
+    @Query(value="select * from t_purchase_history as t where t.buyer_id = ?1",nativeQuery=true)
+    public List<PurchaseHistory> getHistoryList(String buyer_id);
 }
