@@ -13,12 +13,12 @@ public class OrderService {
     @Autowired
     private ItemService itemService;
     
-    public Item searchItems(String item_name) {
+    public List<Item> searchItems(String item_name) {
 
         return this.itemService.searchItems(item_name);
     }
 
-    public List<Item> fillerItems(String priceStart,String priceEnd) {
+    public List<Item> fillerItems(Double priceStart,Double priceEnd) {
 
         return this.itemService.fillerItems(priceStart,priceEnd);
     }

@@ -19,13 +19,14 @@ public class ItemService {
     @Autowired
     private ItemFeignClient itemFeignClient;
 
-    public Item searchItems(String item_name) {
+    public List<Item> searchItems(String item_name) {
         String itemUrl = "http://APP-SELLER/item/searchItems/{item_name}";
-        return this.restTemplate.getForObject(itemUrl, Item.class, item_name);
+        Item[] model =  this.restTemplate.getForObject(itemUrl, Item[].class, item_name);
+        return Arrays.asList(model);
         // return this.itemFeignClient.searchItems(item_name);
     }
 
-    public List<Item> fillerItems(String priceStart, String priceEnd) {
+    public List<Item> fillerItems(Double priceStart, Double priceEnd) {
         String itemUrl = "http://APP-SELLER/item/fillerItems/{priceStart}/{priceEnd}";
         Item[] model = this.restTemplate.getForObject(itemUrl, Item[].class, priceStart, priceEnd);
         return Arrays.asList(model);

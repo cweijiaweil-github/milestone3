@@ -26,7 +26,7 @@ public class Item  implements Serializable{
 
     private String subcategoryId;
 
-    private double price;
+    private Double price;
 
     private String description;
 

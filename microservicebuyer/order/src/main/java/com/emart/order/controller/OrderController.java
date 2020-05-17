@@ -1,6 +1,8 @@
 package com.emart.order.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.emart.order.entity.Item;
 import com.emart.order.service.OrderService;
@@ -25,13 +27,19 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping(value = "/search/{item_name}")
-    public Item searchItems(@PathVariable("item_name") String item_name) {
-        return this.orderService.searchItems(item_name);
+    public Map<String,List<Item>> searchItems(@PathVariable("item_name") String item_name) {
+        List<Item> item = this.orderService.searchItems(item_name);
+        Map<String,List<Item>> map = new HashMap<>();
+        map.put("key", item);
+        return map;
     }
     
-    @GetMapping(value = "/fillerItems/{priceStart,priceEnd}")
-    public List<Item> fillerItems(@PathVariable("priceStart") String priceStart,@PathVariable("priceEnd") String priceEnd) {
-        return this.orderService.fillerItems(priceStart,priceEnd);
+    @GetMapping(value = "/fillerItems/{priceStart}/{priceEnd}")
+    public Map<String,List<Item>> fillerItems(@PathVariable("priceStart") Double priceStart,@PathVariable("priceEnd") Double priceEnd) {
+        List<Item> item = this.orderService.fillerItems(priceStart,priceEnd);
+        Map<String,List<Item>> map = new HashMap<>();
+        map.put("key", item);
+        return map;
     }
 
 }

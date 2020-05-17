@@ -57,7 +57,6 @@ class SellerApplicationTests {
 		String priceStart = "110";
 		String priceEnd = "200";
 		List<Item> result = testRestTemplate.getForObject("/item/fillerItems/{priceStart}/{priceEnd}",List.class,priceStart,priceEnd);
-		System.out.println("ssssssssssssssssssss"+result);
 		JSONArray  json  =  JSONArray.fromObject(result.get(0)); 
 		Assert.isTrue((Double)json.getJSONObject(0).get("price") > 110,"true");
 	}
